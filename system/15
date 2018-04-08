@@ -1,0 +1,1 @@
+sudo kill $(ps -aux | grep 'tail -f /var/log/syslog' | head -n 1 | awk '{print $2}')

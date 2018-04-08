@@ -1,0 +1,12 @@
+# Last modification date (in seconds of /etc/crontab)
+modified=$(stat -c %y /etc/crontab) 
+modified=$(date -d "$modified" +%s)
+now=$(date +%s)
+
+# Check if file has been modified in the last 24 hours
+days=$(( (now-modified)/(3600*24) ))
+if [ $days -eq 0 ]; then
+	echo "Was modified in last 24h"
+	echo "/etc/crontab was modified in the last 24 hours" | mail -s 'crontab alert' root
+fi
+

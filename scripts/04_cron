@@ -1,0 +1,2 @@
+# to add in cron: "sudo crontab -e"
+0 0 * * * $HOME/scripts/04
